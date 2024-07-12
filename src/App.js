@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ExportadoresList from './components/ExportadoresList';
 import ExportadorDetails from './components/ExportadorDetails';
 import CreateExportador from './components/CreateExportador';
-import ToggleExportador from './components/ToggleExportador';
 
 function App() {
     return (
@@ -22,16 +21,12 @@ function App() {
                             Crear Exportador
                         </Link>
                         <br />
-                        <Link to="/toggle-exportador" className="App-link">
-                            Activar/Desactivar Exportador
-                        </Link>
                     </nav>
                 </header>
                 <Routes>
                     <Route path="/" element={<ExportadoresList />} />
                     <Route path="/exportador/:id" element={<ExportadorDetails />} />
                     <Route path="/crear-exportador" element={<CreateExportador />} />
-                    <Route path="/toggle-exportador" element={<ToggleExportador />} />
                 </Routes>
             </div>
         </Router>
