@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ToggleExportador from './ToggleExportador';
+import '../ExportadoresList.css'; // Importa el archivo CSS para los estilos de grid
 
 const ExportadoresList = () => {
     const [exportadores, setExportadores] = useState([]);
@@ -23,21 +24,32 @@ const ExportadoresList = () => {
     };
 
     return (
-        <div>
+        <div className="exportadores-grid">
             <h2>Lista de Exportadores</h2>
-            <ul>
+            <div className="exportadores-container">
                 {exportadores.map(exportador => (
-                    <li key={exportador.id}>
-                        <p>Nombre: {exportador.company.name}</p>
-                        <p>Estado: {exportador.status === 'A' ? 'Activo' : 'Inactivo'}</p>
+                    <div key={exportador.id} className="exportador-card">
+                        <p><strong>Nombre de la empresa:</strong> {exportador.company.name}</p>
+                        <p><strong>Estado:</strong> {exportador.status === 'A' ? 'Activo' : 'Inactivo'}</p>
                         <ToggleExportador
                             exportadorId={exportador.id}
-                            status={exportador.status} // Cambiado de 'estado' a 'status'
+                            status={exportador.status}
                             onUpdate={handleUpdate}
                         />
-                    </li>
+                        <p><strong>ID de la empresa:</strong> {exportador.company.id}</p>
+                        <p><strong>Tipo de identificación:</strong> {exportador.company.identificationType}</p>
+                        <p><strong>Identificación:</strong> {exportador.company.identification}</p>
+                        <p><strong>Versión:</strong> {exportador.version}</p>
+                        <p><strong>Aceptación:</strong> {exportador.acceptance}</p>
+                        <p><strong>Vencimiento:</strong> {exportador.expiration}</p>
+                        <p><strong>Código de provincia:</strong> {exportador.provinceCode}</p>
+                        <p><strong>Código de cantón:</strong> {exportador.cantonCode}</p>
+                        <p><strong>Código de distrito:</strong> {exportador.districtCode}</p>
+                        <p><strong>Email:</strong> {exportador.email}</p>
+                        <p><strong>Sector:</strong> {exportador.sector}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
