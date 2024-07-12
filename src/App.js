@@ -5,19 +5,25 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ExportadoresList from './components/ExportadoresList';
 import ExportadorDetails from './components/ExportadorDetails';
 import CreateExportador from './components/CreateExportador';
+import ToggleExportador from './components/ToggleExportador';
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <header className="App-header">
-                    <h1>Lista de Exportadores</h1>
+                    <h1>App de Exportadores</h1>
                     <nav>
                         <Link to="/" className="App-link">
                             Lista de Exportadores
                         </Link>
+                        <br />
                         <Link to="/crear-exportador" className="App-link">
                             Crear Exportador
+                        </Link>
+                        <br />
+                        <Link to="/toggle-exportador" className="App-link">
+                            Activar/Desactivar Exportador
                         </Link>
                     </nav>
                 </header>
@@ -25,6 +31,7 @@ function App() {
                     <Route path="/" element={<ExportadoresList />} />
                     <Route path="/exportador/:id" element={<ExportadorDetails />} />
                     <Route path="/crear-exportador" element={<CreateExportador />} />
+                    <Route path="/toggle-exportador" element={<ToggleExportador />} />
                 </Routes>
             </div>
         </Router>
